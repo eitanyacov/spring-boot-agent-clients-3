@@ -26,7 +26,12 @@ public class Agent {
     private String email;
     @NonNull
     private Date startedAt;
+
     private int numberOfClients;
+
+    private boolean isActive;
+
+    private String phoneNumber;
 
     @OneToMany
     @JsonIgnore

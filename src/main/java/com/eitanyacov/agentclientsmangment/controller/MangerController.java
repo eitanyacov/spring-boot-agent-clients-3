@@ -32,8 +32,14 @@ public class MangerController {
     public ResponseEntity<Agent> addAgent(@RequestBody Agent agent) {
         Agent newAgent = mangerService.addAgent(agent);
         newAgent.setStartedAt(new Date());
+        newAgent.setActive(true);
         agentRepo.save(newAgent);
         return new ResponseEntity<>(newAgent, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/all-clients")
+    public List<Client> getAllClients() {
+        return clientRepo.findAll();
     }
 
     @GetMapping("/{id}")
