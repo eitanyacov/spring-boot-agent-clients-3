@@ -26,4 +26,8 @@ public class AgentService {
     public Client addClient(Client client) {
         return clientRepo.save(client);
     }
+
+    public Client findClientByEmail(String email) {
+        return clientRepo.findClientByEmail(email);
+    }
 }

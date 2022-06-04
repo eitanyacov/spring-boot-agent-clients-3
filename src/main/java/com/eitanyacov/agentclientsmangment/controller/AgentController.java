@@ -41,7 +41,9 @@ public class AgentController {
             Agent agent = mangerService.getAgentById(id);
             Client newClient = agentService.addClient(client);
             newClient.setSignedAt(new Date());
+            newClient.setAgentName(agent.getName());
             agent.addClientToAgent(newClient);
+            agent.countClients();
             clientRepo.save(newClient);
             agentRepo.save(agent);
             return new ResponseEntity<>(newClient, HttpStatus.OK);
@@ -49,6 +51,12 @@ public class AgentController {
         }catch (AgentNotFoundException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/email/{email}")
+    public ResponseEntity<?> getClientByEmail(@PathVariable String email) {
+        Client client = clientRepo.findClientByEmail(email);
+        return new ResponseEntity<>(client, HttpStatus.OK);
     }
 
 }

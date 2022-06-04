@@ -3,7 +3,6 @@ package com.eitanyacov.agentclientsmangment.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -25,6 +24,8 @@ public class Client {
     private Date signedAt;
 
     private String phoneNumber;
+
+    private String agentName;
 
     @ManyToOne
     @JoinColumn(name = "agent_id")

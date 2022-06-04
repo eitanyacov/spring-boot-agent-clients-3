@@ -26,6 +26,7 @@ public class Agent {
     private String email;
     @NonNull
     private Date startedAt;
+    private int numberOfClients;
 
     @OneToMany
     @JsonIgnore
@@ -38,5 +39,9 @@ public class Agent {
         }
         client.setAgent(this);
         clients.add(client);
+    }
+
+    public void countClients() {
+        numberOfClients ++;
     }
 }
